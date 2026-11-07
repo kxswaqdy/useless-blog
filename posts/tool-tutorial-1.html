@@ -7,6 +7,32 @@
     <!-- 加上這行就能讓瀏覽器書籤列顯示你的專屬 Logo -->
     <link rel="icon" type="image/png" href="../images/favicon.png">
     <style>
+        /* QUANO 共用響應式基礎：各頁可保留自己的配色與版型 */
+        *, *::before, *::after { box-sizing: border-box; }
+        img, video, iframe, svg { max-width: 100%; }
+        img, video { height: auto; }
+        .wrapper, .main-content, .left-sidebar, .right-sidebar { min-width: 0; }
+        pre { max-width: 100%; overflow-x: auto; }
+        p, li, h1, h2, h3, a { overflow-wrap: anywhere; }
+
+        /* 全站統一盒模型：寬度包含 padding 與 border，避免手機版卡片超出螢幕 */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            -webkit-text-size-adjust: 100%;
+            text-size-adjust: 100%;
+        }
+
+        img,
+        video,
+        iframe {
+            max-width: 100%;
+        }
+
         :root {
             --bg-color: #f8fafc;
             --card-bg: #ffffff;
@@ -76,22 +102,25 @@
         
         /* 三栏整体容器 */
         .wrapper {
+            width: 100%;
             max-width: 1380px;
             margin: 30px auto;
             padding: 0 20px;
             display: flex;
             gap: 24px;
-            box-sizing: border-box;
+            min-width: 0;
         }
         
         .left-sidebar { width: 260px; flex-shrink: 0; }
         .main-content {
-            flex: 1;
+            flex: 1 1 0;
+            width: 100%;
+            min-width: 0;
             background: var(--card-bg);
             border: 1px solid var(--border);
             border-radius: 12px;
             padding: 40px;
-            min-width: 0;
+            overflow-wrap: anywhere;
             box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02);
         }
         .right-sidebar { width: 280px; flex-shrink: 0; }
@@ -99,9 +128,9 @@
         @media (max-width: 1024px) {
             /* 平板與手機：正文優先，其次推薦欄，最後側邊廣告 */
             .wrapper { flex-direction: column; }
-            .main-content { order: 0; width: 100%; }
-            .right-sidebar { order: 1; width: 100%; }
-            .left-sidebar { order: 2; width: 100%; }
+            .main-content { order: 0; width: 100%; flex: 0 0 auto; }
+            .right-sidebar { order: 1; width: 100%; flex: 0 0 auto; }
+            .left-sidebar { order: 2; width: 100%; flex: 0 0 auto; }
             .main-content { padding: 30px 24px; }
         }
 
@@ -117,10 +146,16 @@
 
         @media (max-width: 420px) {
             .nav-content { padding: 0 14px !important; }
+            .nav-content > a:first-child { min-width: 0; gap: 8px !important; }
             .nav-content > a:first-child span { font-size: 14px !important; }
+            .nav-content > a:first-child div { flex: 0 0 32px; width: 32px !important; height: 32px !important; }
             .back-btn { font-size: 12px; padding: 7px 10px; }
+            .main-content { padding: 20px 16px; }
+            h1 { font-size: 22px; }
+            .wrapper { padding-left: 12px; padding-right: 12px; gap: 16px; }
             .download-btn-group { gap: 10px; }
-            .download-btn-group a { width: 100%; }
+            .download-btn-group a { width: 100%; max-width: 100%; }
+            .sidebar-card { padding: 16px; }
         }
 
         .sidebar-card {
@@ -220,12 +255,58 @@
             color: #ffffff;
         }
 
-        /* 按钮内部 SVG 图标大小统一调整 */
-        .btn-github svg, .btn-baidu svg {
+        /* 按钮内部 SVG 图标统一尺寸；选择器只作用于图标，不影响按钮本身 */
+        .btn-github svg,
+        .btn-baidu svg,
+        .btn-telegram svg {
+            display: block;
             width: 20px;
             height: 20px;
+            flex: 0 0 20px;
             fill: currentColor;
-            flex-shrink: 0;
+        }
+
+        /* Telegram 按钮样式：文章需要时可直接复用 */
+        .btn-telegram {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            max-width: 100%;
+            padding: 12px 24px;
+            border: 1px solid rgba(255, 255, 255, 0.22);
+            border-radius: 12px;
+            background: linear-gradient(135deg, #2AABEE 0%, #168ACB 100%);
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: 600;
+            text-align: center;
+            text-decoration: none;
+            box-shadow: 0 4px 14px rgba(42, 171, 238, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.28);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .btn-telegram:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(42, 171, 238, 0.32), inset 0 1px 0 rgba(255, 255, 255, 0.35);
+            color: #ffffff;
+        }
+
+        .btn-github:focus-visible,
+        .btn-baidu:focus-visible,
+        .btn-telegram:focus-visible,
+        .back-btn:focus-visible {
+            outline: 3px solid #93c5fd;
+            outline-offset: 3px;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                scroll-behavior: auto !important;
+                transition-duration: 0.01ms !important;
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+            }
         }
 
         code { background: #f1f5f9; padding: 2px 6px; border-radius: 4px; font-family: monospace; color: #d97706; }
@@ -292,13 +373,13 @@
             <!-- 双下载按钮组（带 GitHub 与百度网盘 Icon） -->
             <div class="download-btn-group">
                 <!-- GitHub 按钮 -->
-                <a href="https://github.com/你的用戶名/你的專案名" class="btn-github" target="_blank">
+                <a href="https://github.com/你的用戶名/你的專案名" class="btn-github" target="_blank" rel="noopener noreferrer">
                     <svg viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
                     <span>GitHub 官方源碼下載</span>
                 </a >
 
                 <!-- 百度网盘按钮 -->
-                <a href="https://pan.baidu.com/s/你的網盤鏈接" class="btn-baidu" target="_blank">
+                <a href="https://pan.baidu.com/s/你的網盤鏈接" class="btn-baidu" target="_blank" rel="noopener noreferrer">
                     <svg viewBox="0 0 24 24"><path fill="currentColor" d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM17 13l-5 5-5-5h3V9h4v4h3z"/></svg>
                     <span>百度網盤高速分發 (提取碼: xxxx)</span>
                 </a >
