@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#f8fafc">
-    <meta name="description" content="自习室，初学者。">
-    <title>自习室 - 初学者</title>
+    <meta name="description" content="useless，初学者的自习室。">
+    <title>useless - 初学者的自习室</title>
     <link rel="icon" type="image/png" href="images/favicon.png">
     <style>
         :root {
@@ -357,7 +357,7 @@
         }
 
         @media (max-width: 768px) {
-            /* 手機端隱藏左上角品牌標誌，避免與中央主標題爭搶視線 */
+            /* 手机端隐藏左上角品牌标志，避免与中央主标题争抢视线 */
             .header-brand { display: none !important; }
             header { padding: 38px 18px 32px; }
             header h1 { font-size: 28px; }
@@ -393,28 +393,28 @@
             </a >
         </div>
 
-        <h1>夸諾博客</h1>
-        <p>分享實用軟體、開源專案與詳細技術教程</p>
+        <h1>初学者自习室</h1>
+        <p>复习网上学来的小知识和技巧</p>
         <div class="search-box">
             <span class="search-icon" aria-hidden="true">🔍</span>
             <input
                 type="search"
                 id="searchInput"
                 class="search-input"
-                placeholder="輸入關鍵字搜索文章..."
+                placeholder="输入关键字搜索文章.."
                 aria-label="搜索文章"
                 autocomplete="off"
             >
             <button type="button" class="clear-search" id="clearSearch"
-                aria-label="清除搜尋" title="清除搜尋">×</button>
+                aria-label="清除搜索" title="清除搜索">×</button>
         </div>
     </header>
 
     <div class="wrapper">
         <aside class="left-sidebar">
             <div class="sidebar-card">
-                <h3>📂 文章分類</h3>
-                <ul class="category-list" aria-label="文章分類">
+                <h3>📂 文章分类</h3>
+                <ul class="category-list" aria-label="文章分类">
                     <li><button type="button" data-category="all" class="active" aria-pressed="true">🔥 全部文章</button></li>
                     <li><button type="button" data-category="system" aria-pressed="false">💻 系統優化工具</button></li>
                     <li><button type="button" data-category="network" aria-pressed="false">🌐 網路加速配置</button></li>
@@ -426,21 +426,21 @@
 
         <main class="main-content" id="postContainer">
             <div class="results-summary">
-                <span id="resultsCount" aria-live="polite">目前顯示 2 篇文章</span>
-                <span id="activeFilterLabel">分類：全部文章</span>
+                <span id="resultsCount" aria-live="polite">当前显示 2 篇文章</span>
+                <span id="activeFilterLabel">分类：全部文章</span>
             </div>
 
             <!-- 教程示例：录制部署 GitHub 博客教程时使用的演示内容，暂时保留 -->
             <article class="post-card" data-category="system">
-                <a href="posts/tool-tutorial-1.html" class="card-overlay-link" aria-label="閱讀文章：某某強大開源工具 v2.0"></a>
+                <a href="posts/tool-tutorial-1.html" class="card-overlay-link" aria-label="阅读文章：某某強大开源工具 v2.0"></a>
                 <div class="post-thumb" style="background-image: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=600&q=80');"></div>
                 <div class="post-content">
                     <div>
-                        <h2 class="post-title"><a href="posts/tool-tutorial-1.html">某某強大開源工具 v2.0 最新版發布與詳細使用教程</a></h2>
-                        <div class="post-meta">發布於 2026-10-14 · 閱讀時間約 5 分鐘</div>
+                        <h2 class="post-title"><a href="posts/tool-tutorial-1.html">某某強大开源工具 v2.0 最新版发布与详細使用教程</a></h2>
+                        <div class="post-meta">发布于 2026-10-14 · 阅读时间约 5 分钟</div>
                         <p class="post-snippet">本期影片對應的詳細圖文教程。包含詳細的下載地址、環境配置步驟以及常見報錯解決方案...</p>
                     </div>
-                    <span class="read-more">閱讀全文 →</span>
+                    <span class="read-more">阅读全文 →</span>
                 </div>
             </article>
 
@@ -454,29 +454,29 @@
                         <div class="post-meta">發布於 2026-10-10</div>
                         <p class="post-snippet">後續會持續更新更多優質開源工具與使用指南，歡迎訂閱頻道並關注本站。</p>
                     </div>
-                    <span class="read-more">閱讀全文 →</span>
+                    <span class="read-more">阅读全文 →</span>
                 </div>
             </article>
 
             <p class="empty-state" id="emptyState" role="status" aria-live="polite">
-                沒有找到符合條件的文章，請試試其他關鍵字或分類。
+                沒有找到符合条件的文章，请尝试其他关键字或分类。
             </p>
         </main>
 
         <aside class="right-sidebar">
             <div class="sidebar-card">
-                <div class="channel-avatar" role="img" aria-label="夸諾頻道頭像"></div>
-                <h3>📺 關於夸諾</h3>
+                <div class="channel-avatar" role="img" aria-label="自习室标志"></div>
+                <h3>📺 关于自习室</h3>
                 <p style="font-size: 13px; color: var(--text-muted); margin: 0 0 10px;">
-                    哈囉！我是夸諾。本頻道專注於分享各類高效率開源軟體、實用工具及技術乾貨，帶你解鎖更多科技新玩法！
+                    初学者自习室。主要记录从网上搜集来的小知道！
                 </p>
-                <a href="https://youtube.com/@quanoclass?si=ry2x9HNsD3BKMXff"
+                <a href="#"
                    class="channel-btn" target="_blank" rel="noopener noreferrer">
                     <svg class="youtube-icon" viewBox="0 0 24 17" aria-hidden="true" focusable="false">
                         <rect x="0" y="0" width="24" height="17" rx="4" fill="currentColor"></rect>
                         <path d="M10 4.2L16 8.5L10 12.8Z" fill="#ff0000"></path>
                     </svg>
-                    <span>訂閱 YouTube 頻道</span>
+                    <span>订阅 YouTube 频道</span>
                 </a>
             </div>
         </aside>
@@ -484,12 +484,12 @@
 
     <div style="max-width: 1300px; margin: 0 auto; padding: 0 20px;">
         <div class="footer-ad-box">
-            <span style="color: var(--text-muted); font-size: 13px;">（底部贊助廣告位）</span>
+            <span style="color: var(--text-muted); font-size: 13px;">（底部赞助广告位）</span>
         </div>
     </div>
 
     <footer>
-        &copy; 2026 夸诺博客. All Rights Reserved.
+        &copy; 2026 自习室. All Rights Reserved.
     </footer>
 
     <script>
@@ -543,9 +543,9 @@
             });
 
             emptyState.style.display = visibleCount === 0 ? 'block' : 'none';
-            resultsCount.textContent = `目前顯示 ${visibleCount} 篇文章`;
+            resultsCount.textContent = `当前显示 ${visibleCount} 篇文章`;
             activeFilterLabel.textContent =
-                `分類：${categoryNames[activeCategory] || '全部文章'}`;
+                `分类：${categoryNames[activeCategory] || '全部文章'}`;
             clearSearch.style.display = searchInput.value ? 'block' : 'none';
         }
 
